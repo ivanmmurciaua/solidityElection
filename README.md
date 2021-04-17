@@ -1,2 +1,2 @@
-# solidityElection
-Solidity Example From Dapp University
+# Election in Solidity Example
+## Solidity Example From Dapp University
