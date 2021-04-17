@@ -73,13 +73,26 @@ App = {
           candidatesSelect.append(candidateOption);
         });
       }
-      
+
       loader.hide();
       content.show();
     }).catch(function(error) {
       console.warn(error);
     });
   },
+
+  castVote: function() {
+    var candidateId = $('#candidatesSelect').val();
+    App.contracts.Election.deployed().then(function(instance) {
+      return instance.ballotToVote(candidateId, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  }
 
 };
 
